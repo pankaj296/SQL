@@ -1,0 +1,9 @@
+-- ALTERNATE NAME (ALIAS NAME )
+
+SELECT sales_date AS "Sales date " ,sales_amount AS AMOUNT_of_SALES ,
+CASE
+WHEN total_amount <= 100 THEN 'LOW'
+WHEN total_amount < 1000 THEN 'MEDIUM'
+ELSE 'HIGH'
+END AS "AMOUNT BRACKET"
+FROM SALES;

@@ -1,0 +1,39 @@
+--- SUB QUERY   
+--==================================================================================================
+                            --  --- SUB QUERY     
+--==================================================================================================
+                    SELECT * FROM customer;
+
+SELECT * FROM SALES 
+WHERE customer_id IN (    SELECT customer_id FROM CUSTOMER
+                        WHERE last_name = 'JOSEPH' OR last_name ='MANN'
+                    );
+    
+    --==================================================================================================
+                            --  --- SUB QUERY ON MULTIPAL COLUMNS ( PAIRWISE )
+--==================================================================================================
+
+    SELECT  PRODUCT_ID ,UNIT_PRICE ,ORDER_ID , CUSTOMER_ID , SALES_DATE
+    FROM sales
+    WHERE (PRODUCT_ID ,UNIT_PRICE ) IN ( SELECT PRODUCT_ID ,UNIT_PRICE 
+                                            FROM sales
+                                            WHERE sales_date = '01-01-2015'
+                                            );
+                    
+    
+    --==================================================================================================
+                            --  --- SUB QUERY ON MULTIPAL COLUMNS (NON - PAIRWISE )
+--==================================================================================================
+
+    
+    SELECT  PRODUCT_ID ,UNIT_PRICE ,ORDER_ID , CUSTOMER_ID , SALES_DATE
+    FROM sales
+WHERE PRODUCT_ID  IN    ( SELECT PRODUCT_ID 
+                        FROM sales
+                        WHERE sales_date = '01-01-2015'
+                        )
+AND UNIT_PRICE IN 
+                        ( SELECT UNIT_PRICE
+                            FROM sales
+                            WHERE sales_date = '01-01-2015'
+                        );

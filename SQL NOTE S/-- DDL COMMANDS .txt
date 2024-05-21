@@ -1,0 +1,44 @@
+-- DDL COMMANDS 
+-- 1 create table 
+
+CREATE TABLE customerss
+( customer_id NUMBER (10),
+    customer_name VARCHAR2 (50),
+    join_date DATE ,
+    city VARCHAR2(100)
+);
+SELECT sales_date, order_id FROM SALES;
+
+DESC customerss ;
+
+ALTER TABLE CUSTOMERSS
+ADD (CUSTOMMERS_STATE varchar2 (50), CUSTOMERS_PIN NUMBER (10));
+
+ALTER TABLE CUSTOMERSS
+MODIFY (CUSTOMER_NAME varchar2 (80));
+
+ALTER TABLE CUSTOMERSS
+DROP COLUMN CITY;
+
+ALTER TABLE movies
+DROP COLUMN MOVIE_LANGUAGE;
+	
+
+-- 3 DROP TABLE COMMAND 
+
+CREATE TABLE customers22
+( customer_id NUMBER (10),
+    customer_name VARCHAR2 (50),
+    join_date DATE ,
+    city VARCHAR2(100)
+);
+
+DROP TABLE customers22;
+
+DESC customers22;
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+-- SYNONYMS 
+--==================================================================================================
+                            --  SYNONYMS 
+--==================================================================================================
+
+SELECT * FROM sales;
+
+CREATE SYNONYM INVENTARY_DATA FOR SALES;
+
+SELECT * FROM INVENTARY_DATA;
+
+DROP SYNONYM INVENTARY_DATA;
+
+
+--==================================================================================================
+                            --  SEQUENCES
+--==================================================================================================
+
+CREATE SEQUENCE CUSTOMER_SEQUENCE 
+        MINVALUE 1
+        MAXVALUE 9999
+        START WITH 1 
+        INCREMENT BY 1
+        CACHE 10 ;
+        
+        
+        SELECT CUSTOMER_SEQUENCE.NEXTVAL FROM DUAL ;
+    
+        SELECT CUSTOMER_SEQUENCE.CURRVAL FROM DUAL;
+        

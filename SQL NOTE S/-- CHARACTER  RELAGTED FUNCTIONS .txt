@@ -1,0 +1,22 @@
+-- CHARACTER  RELAGTED FUNCTIONS 
+
+SELECT UPPER ('Pankaj ji') from dual ;
+
+SELECT lower ('Pankaj ji') from dual ;
+
+SELECT length ('pankaj ji') from dual ;
+
+SELECT substr ('pankaj ji',2,3) from dual ;
+
+SELECT DECODE (30,10,'TEN',20, 'TWENTY',30,'THIRTY' ) from dual ;
+
+
+SELECT UPPER ('Pankaj ji') ,
+lower ('Pankaj ji') ,
+length ('pankaj ji') ,
+substr ('pankaj ji',2,3) ,
+ DECODE (30,10,'TEN',20, 'TWENTY',30,'THIRTY' ) 
+ from dual ;
+
+UPPER('PANKAJJI')	LOWER('PANKAJJI')	LENGTH('PANKAJJI')	SUBSTR('PANKAJJI',2,3)	DECODE(30,10,'TEN',20,'TWENTY',30,'THIRTY')
+PANKAJ JI		pankaj ji		9			ank			THIRTY

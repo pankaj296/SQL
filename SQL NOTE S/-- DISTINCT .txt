@@ -1,0 +1,20 @@
+-- DISTINCT 
+
+SELECT * FROM SALES;
+
+SELECT  DISTINCT sales_date FROM SALES;
+
+SELECT  sales_date, order_id FROM SALES;
+
+SELECT DISTINCT sales_date, order_id FROM SALES;
+
+
+-- PSEUDO COLUMNS 
+
+SELECT SYSDATE,USER
+FROM DUAL;
+
+SELECT * FROM SALES;
+
+SELECT ROWNUM, ROWID,  sales_date, order_id FROM SALES;
+

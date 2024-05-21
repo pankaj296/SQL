@@ -1,0 +1,16 @@
+-- CTAS  
+-- create table table_name AS 
+-- Create tsble using data from other table 
+
+CREATE TABLE SALES_BACKUP AS
+SELECT * FROM sales;
+
+DESC SALES_BACKUP;
+SELECT * FROM SALES_BACKUP;
+
+CREATE TABLE SALES_JAN_BACKUP AS
+SELECT  sales_amount, sales_date FROM SALES
+WHERE sales_date BETWEEN '01-01-15' AND '31-01-15';
+
+
+SELECT * FROM SALES_JAN_BACKUP;

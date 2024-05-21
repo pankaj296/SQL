@@ -1,0 +1,13 @@
+-- GRANTS  
+--==================================================================================================
+                            --  GRANTS  
+--==================================================================================================
+SELECT * FROM CUSTOMER;
+
+GRANT DELETE ON PRODUCT TO PANKAJ ;
+
+GRANT SELECT , UPDATE , DELETE ON PRODUCT TO PANKAJ ; 
+
+GRANT ALL ON PRODUCT TO PANKAJ;
+
+GRANT UPDATE ON PRODUCT TO PANKAJ WITH GRANT OPTION;

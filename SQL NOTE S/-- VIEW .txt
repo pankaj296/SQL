@@ -1,0 +1,94 @@
+-- VIEW 
+--==================================================================================================
+                            --  VIEWS 
+--==================================================================================================
+
+SELECT * FROM customer;
+
+CREATE VIEW  SOUTH_CUSTOMER AS
+SELECT CUSTOMER_ID ,address_line1,address_line2,city,country,date_added,first_name,last_name,region
+FROM customer
+WHERE region = 'SOUTH';
+
+SELECT * FROM south_customer;
+--==================================================================================================
+                            -- MODIFYING / REPLACE   VIEWS 
+--==================================================================================================
+
+
+CREATE OR REPLACE VIEW  SOUTH_CUSTOMER AS
+SELECT CUSTOMER_ID ,city,country,date_added,first_name,last_name,region
+FROM customer
+WHERE region = 'SOUTH';
+
+SELECT * FROM south_customer;
+
+--==================================================================================================
+                            -- UPDATE  VIEWS 
+--==================================================================================================
+SELECT * FROM customer;
+
+UPDATE south_customer 
+SET city = 'INDIA' 
+WHERE customer_id = 11;
+
+COMMIT;
+
+--==================================================================================================
+                            -- CREAYE   VIEWS  FROM MORE THAN 1 TABLE 
+--==================================================================================================
+
+SELECT * FROM SALES ;
+
+CREATE VIEW SALES_NORTH AS
+SELECT S.SALES_DATE , S.ORDER_ID , S.PRODUCT_ID , S.customer_id, S.total_amount,
+C.REGION
+FROM sales S ,customer C
+WHERE s.customer_id = c.customer_id
+AND c.region = 'NORTH';
+
+SELECT * FROM sales_south;
+
+SELECT * FROM sales_north;
+
+
+
+
+--1. Create view called SALES_MOBILE that captures below columns and where product
+--category is equal to Mobile.
+-- SALES_DATE (Source: SALES table)
+-- ORDER_ID (Source: SALES table)
+-- QUANTITY (Source: SALES table)
+-- UNIT_PRICE (Source: SALES table)
+-- TOTAL_AMOUNT (Source: SALES table)
+-- PRODUCT_NAME (Source: PRODUCT table)
+-- PRODUCT_CATEGORY (Source: PRODUCT table)
+
+CREATE VIEW  SALES_MOBILE AS
+SELECT S.SALES_DATE , s.order_id ,s.quantity , s.unit_price,s.total_amount,
+p.product_name, p.product_category
+FROM SALES S , PRODUCT P
+WHERE s.product_id = p.product_id
+AND p.product_category = 'Mobile';
+
+SELECT * FROM SALES_MOBILE;
+
+
+--2. Add a new column PRODUCT_ID to the SALES_MOBILE view.
+
+CREATE OR REPLACE VIEW  SALES_MOBILE AS
+SELECT S.SALES_DATE , s.order_id ,s.quantity , s.unit_price,s.total_amount,
+p.product_name, p.product_category , p.product_id
+FROM SALES S , PRODUCT P
+WHERE s.product_id = p.product_id
+AND p.product_category = 'Mobile';
+
+
+--3. Go ahead and delete the SALES_MOBILE view
+
+DROP VIEW SALES_MOBILE  ;
+
+
+
+
+

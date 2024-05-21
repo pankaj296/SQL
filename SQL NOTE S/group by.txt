@@ -1,0 +1,19 @@
+select * from sales;
+
+select COUNT(*) from sales;
+
+select sum(total_amount) from sales ;
+
+select count(*) , sum (total_amount) ,  min (total_amount) ,max(total_amount), AVG(total_amount)
+from sales;
+
+select sales_date , sum(total_amount)
+from sales 
+GROUP BY sales_date
+ORDER BY  sales_date;  
+
+select sales_date ,product_id ,customer_id ,sum(total_amount)
+from sales 
+where sales_date BETWEEN '01-jan-2015' AND '31-jan-2015'
+GROUP BY sales_date , product_id,customer_id
+ORDER BY  sales_date;  

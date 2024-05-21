@@ -1,0 +1,18 @@
+select * from sales;
+
+select COUNT(*) from sales;
+
+select sum(total_amount) from sales ;
+
+select count(*) , sum (total_amount) ,  min (total_amount) ,max(total_amount), AVG(total_amount)
+from sales;
+
+select sales_date , sum(total_amount)
+from sales 
+GROUP BY sales_date
+ORDER BY  sales_date;  
+
+select sales_date , sum(salesperson_id)
+from sales 
+GROUP BY sales_date
+ORDER BY  sales_date;  

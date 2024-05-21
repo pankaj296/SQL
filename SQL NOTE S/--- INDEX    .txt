@@ -1,0 +1,38 @@
+--- INDEX    
+--==================================================================================================
+                            --  --- INDEX     
+--==================================================================================================
+                
+    SELECT * FROM customer;
+    
+    CREATE INDEX CUSTOMER_CITY_INDEX ON  CUSTOMER (CITY);
+    
+    SELECT  * FROM customer
+    WHERE CITY = 'INDIA';
+    
+        SELECT  * FROM customer
+    WHERE UPPER(CITY) = 'INDIA';
+  
+         SELECT  * FROM customer
+    WHERE LOWER(CITY) = 'INDIA';
+  
+    
+--==================================================================================================
+                            --  ---  UNIQUE  INDEX     
+--==================================================================================================
+    
+    CREATE UNIQUE INDEX last_name_uni ON CUSTOMER(last_name);
+    
+        CREATE UNIQUE INDEX CUSTOMER_ID_INDEX ON CUSTOMER(CUSTOMER_ID);
+
+    
+    --==================================================================================================
+                            --  ---  drop and Rename   INDEX     
+--==================================================================================================
+
+    drop index FIRST_NAME_INDEX;
+    
+    ALTER INDEX last_name_uni RENAME TO last_name_INDEX;
+
+  
+  

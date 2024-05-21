@@ -1,0 +1,81 @@
+ ==========================================================================================
+--                                  MULTIPAL    JOINS 
+--==============================================================================================
+SELECT * FROM PRODUCT;
+SELECT * FROM sales;
+
+INSERT INTO PRODUCT VALUES (101,'iPhone',90,'GOLD',95,9,90,'Mobile');
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+    product.product_name,SALESPERSON.job_title
+from sales INNER JOIN product
+    ON sales.product_id = product.product_id
+LEFT OUTER JOIN SALESPERSON
+    ON SALES.SALESPERSON_ID = SALESPERSON.SALESPERSON_ID
+
+
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+    product.product_name,
+    SALESPERSON.job_title,
+    customer.first_name , customer.last_name    
+from sales INNER JOIN product
+    ON sales.product_id = product.product_id
+LEFT OUTER JOIN SALESPERSON
+    ON SALES.SALESPERSON_ID = SALESPERSON.SALESPERSON_ID
+INNER JOIN customer
+    ON sales.customer_id = customer.customer_id
+
+
+ ==========================================================================================
+--                             FILTER   MULTIPAL    JOINS 
+--==============================================================================================
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+    product.product_name,
+    SALESPERSON.job_title,
+    customer.first_name , customer.last_name    
+from sales INNER JOIN product
+    ON sales.product_id = product.product_id
+LEFT OUTER JOIN SALESPERSON
+    ON SALES.SALESPERSON_ID = SALESPERSON.SALESPERSON_ID
+  --  AND salesperson.job_title = 'East Manager'
+INNER JOIN customer
+    ON sales.customer_id = customer.customer_id 
+    WHERE salesperson.job_title = 'East Manager'
+
+
+01-01-2015	1267	100	Mobile Cover	(NULL)_		JOHN	AMIRTHRAJ
+02-01-2015	1268	100	Mobile Cover	(NULL)_		TOM	JOSEPH
+01-02-2015	1269	200	Samsung F7100	(NULL)_		PETER	MANN
+09-02-2015	1270	105	HTC 7800	East Manager	JOHN	AMIRTHRAJ
+09-02-2015	1270	106	Microsoft 	East Manager	JOHN	AMIRTHRAJ
+01-01-2015	1267	101	iPhone		(NULL)_		JOHN	AMIRTHRAJ
+09-02-2015	1270	101	iPhone		East Manager	JOHN	AMIRTHRAJ
+
+
+
+
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+    product.product_name,
+    SALESPERSON.job_title,
+    customer.first_name , customer.last_name    
+from sales INNER JOIN product
+    ON sales.product_id = product.product_id
+LEFT OUTER JOIN SALESPERSON
+    ON SALES.SALESPERSON_ID = SALESPERSON.SALESPERSON_ID
+   -- AND salesperson.job_title = 'East Manager'
+INNER JOIN customer
+    ON sales.customer_id = customer.customer_id 
+    WHERE salesperson.job_title = 'East Manager'
+
+
+
+SALES_DATE	ORDER_ID	PRODUCT_ID	PRODUCT_NAME	JOB_TITLE	FIRST_NAME	LAST_NAME
+09-02-2015	1270	105	HTC 7800	East Manager	JOHN	AMIRTHRAJ
+09-02-2015	1270	106	Microsoft	East Manager	JOHN	AMIRTHRAJ
+09-02-2015	1270	101	iPhone		East Manager	JOHN	AMIRTHRAJ
+
+    
+

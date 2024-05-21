@@ -1,0 +1,182 @@
+ ==========================================================================================
+--                                  INNER JOINS 
+--==============================================================================================
+
+
+SELECT * from sales;
+
+
+
+product_id
+200
+100
+101  -- not there 
+100
+105
+106
+101  -- not there 
+
+SELECT * from product;
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+product.product_name
+from sales INNER JOIN product
+ON sales.product_id = product.product_id
+
+OUTPUT
+
+SALES_DATE	ORDER_ID	PRODUCT_ID	PRODUCT_NAME
+01-02-2015	1269	200	Samsung F7100
+01-01-2015	1267	100	Mobile Cover
+02-01-2015	1268	100	Mobile Cover
+09-02-2015	1270	105	HTC 7800
+09-02-2015	1270	106	Microsoft Keyboard 7865
+
+ --==========================================================================================
+--                                  LEFT  OUTER  JOINS 
+--==============================================================================================
+
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+product.product_name
+from sales LEFT OUTER JOIN product
+ON sales.product_id = product.product_id
+
+
+OUTPUT
+
+02-01-2015	1268	100	Mobile Cover
+01-01-2015	1267	100	Mobile Cover
+01-02-2015	1269	200	Samsung F7100
+09-02-2015	1270	105	HTC 7800
+09-02-2015	1270	106	Microsoft Keyboard 7865
+09-02-2015	1270	101	NULL
+01-01-2015	1267	101	NULL
+
+
+ ==========================================================================================
+--                                  RIGHT OUTER  JOINS 
+--==============================================================================================
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+product.product_name
+from sales RIGHT OUTER JOIN product
+ON sales.product_id = product.product_id
+
+OUTPUT
+
+01-02-2015	1269	200	Samsung F7100
+01-01-2015	1267	100	Mobile Cover
+02-01-2015	1268	100	Mobile Cover
+09-02-2015	1270	105	HTC 7800
+09-02-2015	1270	106	Microsoft Keyboard 7865
+NULL		NULL	NULL	Microsoft Mouse 7863
+
+
+
+ ==========================================================================================
+--                                  FULL OUTER  JOINS 
+--==============================================================================================
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+product.product_name
+from sales FULL OUTER JOIN product
+ON sales.product_id = product.product_id
+
+OUTPUT: 
+
+01-02-2015	1269	200	Samsung F7100
+01-01-2015	1267	100	Mobile Cover
+01-01-2015	1267	101	NULL
+02-01-2015	1268	100	Mobile Cover
+09-02-2015	1270	105	HTC 7800
+09-02-2015	1270	106	Microsoft Keyboard 7865
+09-02-2015	1270	101	NULL
+NULL		NULL	NULL	Microsoft Mouse 7863
+
+
+ ==========================================================================================
+--                                  CROSS  JOINS 
+--==============================================================================================
+SELECT * FROM SALES;  -- => 7 ROWS
+
+SELECT * FROM PRODUCT;  -- => 5 ROWS
+
+---  CROSS JOINS  MEANS 7 * 5 = 35 
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+product.product_name
+from sales CROSS JOIN product
+
+ ==========================================================================================
+--                                  NATURAL   JOINS 
+--==============================================================================================
+
+select sales_date , order_id , product_id ,
+product_name
+from sales NATURAL JOIN product
+
+
+OUTPUT 
+
+01-02-2015	1269	200	Samsung F7100
+01-01-2015	1267	100	Mobile Cover
+02-01-2015	1268	100	Mobile Cover
+09-02-2015	1270	105	HTC 7800
+09-02-2015	1270	106	Microsoft Keyboard 7865
+
+
+
+
+
+--   Produce a list which returns all rows from the SALES and PRODUCT tables where there is
+--a matching PRODUCT_ID value in both the SALES and PRODUCT tables.
+
+SELECT * 
+from sales INNER JOIN product
+on sales.product_id = product.product_id;
+
+
+--2. Produce a list which returns all rows from the SALES table and only those rows from the
+--PRODUCT table where the joined field PRODUCT_ID is equal.
+
+SELECT * 
+from sales  LEFT OUTER JOIN product
+on sales.product_id = product.product_id;
+
+
+--3. Produce a list which returns all rows from the PRODUCT table and only those rows from
+--the SALES table where the joined field PRODUCT_ID is equal.
+
+SELECT * 
+from sales  RIGHT OUTER JOIN product
+on sales.product_id = product.product_id;
+
+--4. Produce a list which returns all rows from the SALES and PRODUCT table irrespective of
+--PRODUCT_ID match between these tables. (PRODUCT_ID can match between both these
+--tables or it might not match).
+
+
+ SELECT *
+ FROM sales FULL OUTER JOIN product
+ ON sales.product_id = product.product_id;
+
+
+select sales.sales_date , sales.order_id , sales.product_id ,
+    product.product_name,
+    SALESPERSON.job_title,
+    customer.first_name , customer.last_name    
+from sales INNER JOIN product
+    ON sales.product_id = product.product_id
+LEFT OUTER JOIN SALESPERSON
+    ON SALES.SALESPERSON_ID = SALESPERSON.SALESPERSON_ID
+    AND salesperson.job_title = 'East Manager'
+INNER JOIN customer
+    ON sales.customer_id = customer.customer_id ;
+   -- WHERE salesperson.job_title = 'East Manager'
+   
+
+
+
+
+

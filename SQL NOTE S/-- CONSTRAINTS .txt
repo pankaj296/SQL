@@ -1,0 +1,148 @@
+-- CONSTRAINTS 
+-- NOT NULL
+
+
+
+
+SELECT * FROM MOVIES;
+
+DROP TABLE MOVIES;
+
+DESC MOVIES;
+
+ CREATE TABLE movies
+(
+Movie_number number (10),
+Movie_name varchar2(100),
+Movie_type varchar2(40),
+Movie_release_date date
+);
+
+ALTER  TABLE MOVIES
+MODIFY Movie_number NUMBER (10)NOT NULL;
+
+
+ INSERT INTO movies VALUES
+(
+101,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015'
+);
+COMMIT;
+
+INSERT INTO movies VALUES
+( NULL,
+ 'BABIES DAY OUT',
+'COMEDY',
+'11-FEB-2014'
+);
+
+-- UNIQUE 
+--==================================================================================================
+-- -- UNIQUE KEY  CONSTRAINS 
+--==================================================================================================
+
+
+
+SELECT * FROM MOVIES;
+
+DROP TABLE MOVIES;
+
+DESC MOVIES;
+
+ CREATE TABLE movies
+(
+Movie_number number (10) UNIQUE ,
+Movie_name varchar2(100),
+Movie_type varchar2(40),
+Movie_release_date date
+);
+
+ INSERT INTO movies VALUES
+(
+101,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015'
+);
+COMMIT;
+
+INSERT INTO movies VALUES
+( NULL,
+ 'BABIES DAY OUT',
+'COMEDY',
+'11-FEB-2014'
+);
+
+-- PRIMARY KEY 
+
+--==================================================================================================
+-- -- PRIMARY KEY  CONSTRAINS 
+--==================================================================================================
+
+SELECT * FROM MOVIES;
+DROP TABLE MOVIES;
+DESC MOVIES;
+
+ INSERT INTO movies VALUES
+(
+101,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015',
+'HINDI'
+);
+
+ INSERT INTO movies VALUES
+(
+101,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015'
+);
+COMMIT;
+
+INSERT INTO movies VALUES
+( NULL,
+ 'BABIES DAY OUT',
+'COMEDY',
+'11-FEB-2014'
+);
+
+ INSERT INTO movies VALUES
+(
+101,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015'
+);
+COMMIT;
+
+DELETE FROM movies WHERE movies.movie_name = 'RUSH HOURS';
+
+ CREATE TABLE movies
+(
+Movie_number number (10) PRIMARY KEY ,
+Movie_name varchar2(100),
+Movie_type varchar2(40),
+Movie_release_date date,
+Movie_Active_Flag VARCHAR2 (1) CHECK (Movie_Active_Flag IN ( 'Y','N' ) )
+);
+
+SELECT * FROM movies;
+
+ INSERT INTO movies VALUES
+(
+102,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015','N'
+);
+COMMIT;
+
+
+--==================================================================================================
+-- FOREIGN KEY  CONSTRAINS 
+--==================================================================================================
+

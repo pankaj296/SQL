@@ -1,0 +1,110 @@
+-- DML COMMANDS
+
+ -- INSERT , UPDATE & DELETE COMMAND SHOULD BE FOLLOWED BY COMMIT OR ROLLBACK 
+ 
+ 
+ INSERT INTO customerss 
+ ( customer_id,customer_name,join_date)
+ VALUES 
+ ( 5000, 'PANKAJ', '01-01-24' );
+
+ INSERT INTO customerss 
+ ( customer_id,customer_name,join_date)
+ VALUES 
+ ( 5001, 'RAJ', '02-01-24' );
+
+ INSERT INTO customerss ( customer_id,customer_name,join_date)
+ SELECT customer_id,customer_name,join_date FROM customerss;
+ 
+ COMMIT;
+ 
+ SELECT * FROM  customerss;
+ 
+ 
+DELETE FROM customerss WHERE  customer_id = 5000;
+
+ROLLBACK;
+
+
+UPDATE customerss
+SET customer_name = 'BHAI BHAI' , custommers_country = 'INDIA'
+WHERE customerss.customer_id = 5001;
+
+
+TRUNCATE TABLE movies;
+
+SELECT * FROM movies;
+
+--Insert 3 rows into the MOVIES table, Below is the MOVIES table structure.
+--Movie_number number,
+--Movie_name varchar2(100),
+--Movie_type varchar2(40),
+--Movie_release_date date
+
+ INSERT INTO movies VALUES
+(
+101,
+'TERMINATOR',
+'ACTION',
+'12-JAN-2015'
+);
+COMMIT;
+
+INSERT INTO movies VALUES
+(
+102,
+'BABIES DAY OUT',
+'COMEDY',
+'11-FEB-2014'
+);
+COMMIT;
+
+INSERT INTO movies VALUES
+(
+103,
+'RUSH HOUR',
+'ACTION',
+'12-DEC-2001'
+);
+COMMIT;
+
+
+--2. Modify movie release date of movie number 101 from ’12-jan-2015’ to ’14-jan-2015’
+
+UPDATE movies
+SET movies.movie_release_date = '14-01-2015'
+WHERE movies.movie_number = 101;
+
+--3. Delete the row from MOVIES table where the movie name is RUSH HOUR.
+
+ALTER TABLE movies
+DROP COLUMN MOVIE_LANGUAGE;
+
+DELETE FROM movies WHERE movies.movie_name = 'RUSH HOURS';
+--
+--1. Insert 3 rows into the MOVIES table, Below is the MOVIES table structure.
+--Movie_number number,
+--Movie_name varchar2(100),
+--Movie_type varchar2(40),
+--Movie_release_date date
+ 
+ INSERT INTO movies (movie_number,movie_name,movie_type,movie_release_date)
+ VALUES (201,'RAJABABUA' ,'ACTION','01-01-2019');
+
+ INSERT INTO movies (movie_number,movie_name,movie_type,movie_release_date)
+ VALUES (202,'TERA DIN KA KY' ,'ACTION','01-08-2019'); 
+ 
+  INSERT INTO movies (movie_number,movie_name,movie_type,movie_release_date)
+ VALUES (203,'DIL KA DIL' ,'ROMANTIC','05-09-2019');
+ 
+ SELECT * FROM movies;
+
+--2. Modify movie release date of movie number 101 from ’12-jan-2015’ to ’14-jan-2015’
+
+UPDATE movies 
+SET movie_release_date = '14-jan-2015'
+WHERE movie_number = 101;
+
+COMMIT;
+
+--3. Delete the row from MOVIES table where the movie name is RUSH HOUR.
